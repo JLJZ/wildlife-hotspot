@@ -1,0 +1,57 @@
+{
+  "workspaces": {
+    "C:\\Users\\jerem\\Repositories\\wildlife-hotspot-viewer": {
+      "hint": "Wildlife Hotspot Viewer - Next.js 16 + TypeScript + Leaflet.js mapping app for endangered species visualization",
+      "associatedRemoteUrls": [
+        "origin: git@github.com:JLJZ/mega-hackathon-2026.git"
+      ],
+      "latestGitCommitHash": "3155786b8c2d9ca6083db68b61ab0cbff4b569a8",
+      "tags": ["nextjs", "typescript", "leaflet", "wildlife", "conservation", "react", "mapping"],
+      "description": "Interactive world map displaying endangered and extinct animals with filtering, search, and detailed species information",
+      "projectType": "web-application",
+      "techStack": {
+        "framework": "Next.js 16.1.6",
+        "language": "TypeScript",
+        "uiLibrary": "React",
+        "mapping": "Leaflet.js",
+        "styling": "CSS-in-JS"
+      },
+      "keyFeatures": [
+        "Interactive world map with marker clustering",
+        "Filtering by IUCN conservation status",
+        "Search functionality for species",
+        "Detailed species information panel",
+        "Dark theme with accessibility support",
+        "Mobile-responsive design"
+      ],
+      "importantFiles": {
+        "main": "src/app/page.tsx",
+        "data": "src/data/species.ts",
+        "map": "src/components/Map.tsx",
+        "filtering": "src/components/FilterBar.tsx",
+        "details": "src/components/DetailPanel.tsx"
+      },
+      "developmentCommands": {
+        "dev": "npm run dev",
+        "build": "npm run build",
+        "lint": "npm run lint",
+        "start": "npm run start"
+      },
+      "dependencies": [
+        "leaflet",
+        "leaflet.markercluster",
+        "next",
+        "react",
+        "react-dom"
+      ],
+      "devDependencies": [
+        "@types/leaflet",
+        "@types/leaflet.markercluster",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "typescript"
+      ]
+    }
+  }
+}
