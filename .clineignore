@@ -1,0 +1,49 @@
+# Clineignore file - Ignore files and directories that should not be processed by Cline
+
+# Node.js dependencies
+node_modules/
+pnpm-store/
+
+# Next.js build artifacts
+.next/
+out/
+build/
+
+# Testing coverage
+coverage/
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-*
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Cache and temporary files
+.cache/
+.vscode-test/
+
+# Log files
+*.log
+*.log.*
+
+# Environment files (local development)
+.env.local
+.env.*.local
+
+# Vercel deployment
+.vercel/
+
+# TypeScript build files
+*.tsbuildinfo
+next-env.d.ts
+
+# Local development files
+*.pem
+
+# Cline-specific temporary files
+.cline-temp/
