@@ -88,14 +88,18 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
 
         // Create tooltip content once to reuse
         const tooltipContent = `
-          <div style="background: #161b22; padding: 8px 12px; border-radius: 6px; border: 1px solid #30363d;">
-            <strong style="color: #f0f6fc; font-family: Outfit, sans-serif;">${speciesItem.icon} ${speciesItem.name}</strong><br>
+          <div style="background: #161b22; padding: 8px 12px; border-radius: 6px; border: 1px solid #30363d; min-width: 120px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <img src="${speciesItem.image}" alt="${speciesItem.name}" style="width: 24px; height: 24px; border-radius: 4px; object-fit: cover; border: 1px solid #30363d;" onerror="this.style.display='none'; this.parentNode.querySelector('.fallback-icon').style.display='block';">
+              <span class="fallback-icon" style="display: none; width: 24px; height: 24px; background: #30363d; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #8b949e;">${speciesItem.name.charAt(0)}</span>
+            </div>
+            <strong style="color: #f0f6fc; font-family: Outfit, sans-serif; font-size: 12px; display: block; margin-bottom: 4px;">${speciesItem.name}</strong>
             <span style="color: ${statusColors[speciesItem.status]}; font-size: 11px; font-family: Outfit, sans-serif;">${speciesItem.statusFull}</span>
           </div>
         `;
 
         // Create markers for the main location and wrapped copies
-        const createMarker = (lat: number, lng: number) => {
+        const createMarker = (lat: number, lng: number, locationName?: string) => {
           const marker = L.circleMarker([lat, lng], {
             radius: size,
             fillColor: statusColors[speciesItem.status],
@@ -106,7 +110,13 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
             className: isCritical ? 'critical-marker' : ''
           });
 
-          marker.bindTooltip(tooltipContent, {
+          // Build tooltip content with location name if available
+          let tooltipHtml = tooltipContent;
+          if (locationName) {
+            tooltipHtml = tooltipContent.replace('</div>', `<br><span style="color: #8b949e; font-size: 10px; font-family: Outfit, sans-serif;">${locationName}</span></div>`);
+          }
+
+          marker.bindTooltip(tooltipHtml, {
             className: 'custom-tooltip',
             direction: 'top',
             offset: [0, -10]
@@ -119,14 +129,14 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
           return marker;
         };
 
-        // Add main marker
-        const mainMarker = createMarker(location.lat, location.lng);
+        // Add main marker with location name
+        const mainMarker = createMarker(location.lat, location.lng, location.name);
         markerCluster.addLayer(mainMarker);
 
         // Add wrapped markers for world copy jumping
         // Create markers at +360° and -360° longitude
-        const wrappedMarker1 = createMarker(location.lat, location.lng + 360);
-        const wrappedMarker2 = createMarker(location.lat, location.lng - 360);
+        const wrappedMarker1 = createMarker(location.lat, location.lng + 360, location.name);
+        const wrappedMarker2 = createMarker(location.lat, location.lng - 360, location.name);
         
         markerCluster.addLayer(wrappedMarker1);
         markerCluster.addLayer(wrappedMarker2);

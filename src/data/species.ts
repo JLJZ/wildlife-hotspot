@@ -14,7 +14,7 @@ export interface Species {
   habitat: string;
   region: string;
   year: number;
-  icon: string;
+  image: string;
   description: string;
   locations: Location[];
 }
@@ -30,7 +30,7 @@ export const speciesData: Species[] = [
     habitat: "Temperate Forests",
     region: "Russian Far East, China",
     year: 1996,
-    icon: "🐆",
+    image: "/images/amur-leopard.jpg",
     description: "The Amur leopard is one of the rarest big cats in the world. These solitary creatures are known for their beautiful spotted coat and incredible jumping ability. They are adapted to cold climates with thick fur.",
     locations: [
       { lat: 43.5, lng: 132.5, name: "Land of the Leopard National Park, Russia" },
@@ -47,7 +47,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Rainforests",
     region: "Sumatra, Indonesia",
     year: 2000,
-    icon: "🦧",
+    image: "/images/sumatran-orangutan.jpg",
     description: "Sumatran orangutans are the most arboreal of the great apes. They spend nearly all their time in trees, building new nests each night. These intelligent primates share 97% of human DNA.",
     locations: [
       { lat: 2.5, lng: 98.5, name: "Gunung Leuser National Park" },
@@ -64,7 +64,7 @@ export const speciesData: Species[] = [
     habitat: "Coral Reefs",
     region: "Tropical Oceans",
     year: 1988,
-    icon: "🐢",
+    image: "/images/hawksbill-sea-turtle.jpg",
     description: "Hawksbill turtles are named for their narrow, pointed beaks. They feed primarily on sponges and are found throughout the world's tropical oceans. Their beautiful shells have made them targets for the illegal wildlife trade.",
     locations: [
       { lat: 18.5, lng: -66.5, name: "Caribbean Sea" },
@@ -82,7 +82,7 @@ export const speciesData: Species[] = [
     habitat: "Marine/Coastal",
     region: "Gulf of California, Mexico",
     year: 1990,
-    icon: "🐬",
+    image: "/images/vaquita.jpg",
     description: "The vaquita is the world's smallest and most endangered cetacean. With only about 10 individuals remaining, they are on the brink of extinction, primarily due to bycatch in illegal gillnets.",
     locations: [
       { lat: 31.0, lng: -114.5, name: "Northern Gulf of California" }
@@ -98,7 +98,7 @@ export const speciesData: Species[] = [
     habitat: "Montane Forests",
     region: "Central Africa",
     year: 1996,
-    icon: "🦍",
+    image: "/images/mountain-gorilla.jpg",
     description: "Mountain gorillas live in high-altitude forests and are larger and heavier than other gorillas. Despite their fearsome appearance, they are gentle vegetarians and live in close-knit family groups.",
     locations: [
       { lat: -1.5, lng: 29.5, name: "Virunga Mountains, DRC" },
@@ -115,7 +115,7 @@ export const speciesData: Species[] = [
     habitat: "Savanna, Semi-Desert",
     region: "Eastern & Southern Africa",
     year: 1996,
-    icon: "🦏",
+    image: "/images/black-rhinoceros.jpg",
     description: "Black rhinos are browsers with a pointed, prehensile upper lip. Despite their name, they are actually gray. Poaching for their horns remains their biggest threat.",
     locations: [
       { lat: -2.5, lng: 34.5, name: "Serengeti, Tanzania" },
@@ -133,7 +133,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Rainforests",
     region: "Sumatra, Indonesia",
     year: 1996,
-    icon: "🐅",
+    image: "/images/sumatran-tiger.jpg",
     description: "The Sumatran tiger is the smallest surviving tiger subspecies. They are excellent swimmers and have distinctive narrow stripes that provide camouflage in their forest habitat.",
     locations: [
       { lat: 1.0, lng: 101.0, name: "Kerinci Seblat National Park" },
@@ -150,7 +150,7 @@ export const speciesData: Species[] = [
     habitat: "Open Ocean",
     region: "Worldwide Oceans",
     year: 1996,
-    icon: "🐋",
+    image: "/images/blue-whale.jpg",
     description: "The blue whale is the largest animal ever known to exist. Their hearts alone weigh as much as a car. Despite recovering from near-extinction, they face threats from climate change and shipping traffic.",
     locations: [
       { lat: 34.0, lng: -123.0, name: "Pacific Coast, USA" },
@@ -168,7 +168,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Rainforests",
     region: "Central Africa",
     year: 2021,
-    icon: "🐘",
+    image: "/images/african-forest-elephant.jpg",
     description: "African forest elephants are smaller than their savanna cousins with straighter, downward-pointing tusks. They play a crucial role in maintaining the structure and composition of African forests.",
     locations: [
       { lat: 0.5, lng: 12.5, name: "Congo Basin" },
@@ -185,7 +185,7 @@ export const speciesData: Species[] = [
     habitat: "High Mountain",
     region: "Central Asia",
     year: 2016,
-    icon: "🐱",
+    image: "/images/snow-leopard.jpg",
     description: "Snow leopards are known as 'ghosts of the mountains' due to their elusive nature. They are perfectly adapted to cold, harsh mountain environments with their thick fur and long tails for balance.",
     locations: [
       { lat: 36.0, lng: 74.0, name: "Himalayas" },
@@ -203,7 +203,7 @@ export const speciesData: Species[] = [
     habitat: "Forests",
     region: "Mauritius",
     year: 1662,
-    icon: "🦤",
+    image: "/images/dodo.jpg",
     description: "The dodo was a flightless bird endemic to the island of Mauritius. It went extinct less than a century after European discovery, primarily due to hunting and introduced species. It has become an icon of extinction.",
     locations: [
       { lat: -20.3, lng: 57.5, name: "Mauritius (historical)" }
@@ -219,7 +219,7 @@ export const speciesData: Species[] = [
     habitat: "Grasslands, Forests",
     region: "Tasmania, Australia",
     year: 1936,
-    icon: "🐅",
+    image: "/images/tasmanian-tiger.jpg",
     description: "The thylacine, or Tasmanian tiger, was the largest carnivorous marsupial of modern times. Despite numerous alleged sightings, it is believed to have gone extinct in the early 20th century.",
     locations: [
       { lat: -42.0, lng: 146.5, name: "Tasmania (historical)" }
@@ -235,7 +235,7 @@ export const speciesData: Species[] = [
     habitat: "Tundra, Steppe",
     region: "Northern Eurasia, North America",
     year: -4000,
-    icon: "🐘",
+    image: "/images/woolly-mammoth.jpg",
     description: "Woolly mammoths were covered in thick fur and lived during the Ice Age. They were hunted by early humans and eventually went extinct, possibly due to climate change and hunting.",
     locations: [
       { lat: 70.0, lng: 170.0, name: "Siberian Arctic (frozen remains)" },
@@ -252,7 +252,7 @@ export const speciesData: Species[] = [
     habitat: "Forests",
     region: "North America",
     year: 1914,
-    icon: "🐦",
+    image: "/images/passenger-pigeon.jpg",
     description: "Once the most abundant bird in North America, with flocks numbering billions, the passenger pigeon was hunted to extinction in less than a century. The last known individual died in 1914.",
     locations: [
       { lat: 42.0, lng: -83.0, name: "Michigan, USA (historical)" },
@@ -269,7 +269,7 @@ export const speciesData: Species[] = [
     habitat: "Coastal Islands",
     region: "North Atlantic",
     year: 1844,
-    icon: "🐧",
+    image: "/images/great-auk.jpg",
     description: "The great auk was a flightless seabird that lived in the North Atlantic. It was hunted extensively for its feathers, meat, and oil. The last two were killed in 1844 on Eldey Island, Iceland.",
     locations: [
       { lat: 63.5, lng: -20.0, name: "Eldey Island, Iceland (last known)" },
@@ -286,7 +286,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Forests, Savanna",
     region: "Asia & Africa",
     year: 2014,
-    icon: "🦎",
+    image: "/images/pangolin.jpg",
     description: "Pangolins are the world's only scaled mammals. They are nocturnal, insect-eating creatures that curl into a ball when threatened. They are the most trafficked mammals in the world.",
     locations: [
       { lat: 22.0, lng: 105.0, name: "Vietnam" },
@@ -304,7 +304,7 @@ export const speciesData: Species[] = [
     habitat: "Open Ocean",
     region: "Tropical & Temperate Oceans",
     year: 1988,
-    icon: "🐢",
+    image: "/images/leatherback-sea-turtle.jpg",
     description: "The leatherback is the largest of all sea turtles and can dive deeper than 1,000 meters. Unlike other turtles, they have a flexible, leathery shell instead of a hard carapace.",
     locations: [
       { lat: 9.0, lng: -80.0, name: "Caribbean coast of Panama" },
@@ -322,7 +322,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Forests, Grasslands",
     region: "Indian Subcontinent",
     year: 2011,
-    icon: "🐯",
+    image: "/images/bengal-tiger.jpg",
     description: "The Bengal tiger is the most numerous tiger subspecies. They are powerful apex predators that require large territories. India hosts the majority of the world's remaining Bengal tigers.",
     locations: [
       { lat: 26.0, lng: 78.0, name: "Kanha National Park, India" },
@@ -340,7 +340,7 @@ export const speciesData: Species[] = [
     habitat: "Wet Evergreen Forests",
     region: "Vietnam & Laos",
     year: 1992,
-    icon: "🦌",
+    image: "/images/saola.jpg",
     description: "The saola, also called the Asian unicorn, was only discovered in 1992. It is one of the rarest large mammals in the world and has never been seen by scientists in the wild.",
     locations: [
       { lat: 17.5, lng: 106.0, name: "Annamite Mountains, Vietnam" },
@@ -357,7 +357,7 @@ export const speciesData: Species[] = [
     habitat: "Temperate Forests",
     region: "Central China",
     year: 1990,
-    icon: "🐼",
+    image: "/images/giant-panda.jpg",
     description: "Giant pandas are beloved worldwide for their distinctive black and white coloration. Despite being classified as carnivores, 99% of their diet consists of bamboo. Conservation efforts have brought them back from the brink.",
     locations: [
       { lat: 30.5, lng: 103.0, name: "Sichuan Mountains" },
@@ -374,7 +374,7 @@ export const speciesData: Species[] = [
     habitat: "Coastal Waters",
     region: "North Atlantic",
     year: 2008,
-    icon: "🐋",
+    image: "/images/north-atlantic-right-whale.jpg",
     description: "North Atlantic right whales were named by whalers as the 'right' whale to hunt. They are now one of the most endangered whales, facing threats from ship strikes and fishing gear entanglement.",
     locations: [
       { lat: 43.0, lng: -70.0, name: "Gulf of Maine, USA" },
@@ -391,7 +391,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Forests",
     region: "South & Southeast Asia",
     year: 1986,
-    icon: "🐘",
+    image: "/images/asian-elephant.jpg",
     description: "Asian elephants are smaller than African elephants and have smaller ears. They are highly intelligent, social animals that have been domesticated for centuries for logging and ceremonial purposes.",
     locations: [
       { lat: 11.5, lng: 85.0, name: "India" },
@@ -409,7 +409,7 @@ export const speciesData: Species[] = [
     habitat: "Atlantic Coastal Forests",
     region: "Brazil",
     year: 1982,
-    icon: "🐒",
+    image: "/images/golden-lion-tamarin.jpg",
     description: "Golden lion tamarins are small, brightly colored monkeys known for their magnificent golden fur mane. They are endemic to the Atlantic coastal forests of Brazil, one of the world's most threatened ecosystems.",
     locations: [
       { lat: -22.5, lng: -43.0, name: "Rio de Janeiro state" },
@@ -426,7 +426,7 @@ export const speciesData: Species[] = [
     habitat: "Coastal Waters",
     region: "Commander Islands, Bering Sea",
     year: 1768,
-    icon: "🐄",
+    image: "/images/stellers-sea-cow.jpg",
     description: "Steller's sea cows were massive, slow-moving marine mammals discovered in 1741. They were hunted to extinction within just 27 years for their meat, fat, and hide.",
     locations: [
       { lat: 55.0, lng: 166.0, name: "Bering Island (historical)" }
@@ -442,7 +442,7 @@ export const speciesData: Species[] = [
     habitat: "Rocky Shrub, Coniferous Forests",
     region: "California, USA",
     year: 1967,
-    icon: "🦅",
+    image: "/images/california-condor.jpg",
     description: "The California condor is North America's largest flying land bird with a wingspan of nearly 10 feet. Once extinct in the wild, intensive conservation efforts have brought them back.",
     locations: [
       { lat: 34.5, lng: -119.5, name: "Ventura County, California" },
@@ -459,7 +459,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Forests",
     region: "Central & West Africa",
     year: 2016,
-    icon: "🐒",
+    image: "/images/chimpanzee.jpg",
     description: "Chimpanzees are our closest living relatives, sharing about 98% of our DNA. They are highly intelligent, social animals that use tools and can learn sign language.",
     locations: [
       { lat: 0.5, lng: 12.5, name: "Congo Basin" },
@@ -477,7 +477,7 @@ export const speciesData: Species[] = [
     habitat: "Temperate Forests",
     region: "Eastern Himalayas",
     year: 2015,
-    icon: "🐼",
+    image: "/images/red-panda.jpg",
     description: "Red pandas are not closely related to giant pandas despite their name. These small, arboreal mammals feed primarily on bamboo and are known for their striking russet fur and bushy tails.",
     locations: [
       { lat: 27.5, lng: 88.0, name: "Sikkim, India" },
@@ -495,7 +495,7 @@ export const speciesData: Species[] = [
     habitat: "Forests, Gardens",
     region: "Samoa, Tonga",
     year: 2018,
-    icon: "🦜",
+    image: "/images/blue-crowned-lorikeet.jpg",
     description: "This small, colorful parrot is endemic to the islands of Samoa and Tonga. They are highly social birds that travel in small flocks and feed on nectar and fruit.",
     locations: [
       { lat: -14.0, lng: -172.0, name: "Upolu, Samoa" },
@@ -512,7 +512,7 @@ export const speciesData: Species[] = [
     habitat: "Coastal Waters",
     region: "Galápagos Islands",
     year: 2000,
-    icon: "🐧",
+    image: "/images/galapagos-penguin.jpg",
     description: "The Galápagos penguin is the only penguin species found north of the equator. They are adapted to the relatively warm climate and are threatened by climate change and fishing.",
     locations: [
       { lat: -0.5, lng: -90.5, name: "Isabela Island" },
@@ -529,7 +529,7 @@ export const speciesData: Species[] = [
     habitat: "Savanna, Woodland",
     region: "Southern Africa",
     year: 2012,
-    icon: "🐕",
+    image: "/images/african-wild-dog.jpg",
     description: "African wild dogs are highly social canids that live in packs with complex social structures. They are efficient hunters with success rates higher than lions.",
     locations: [
       { lat: -2.5, lng: 34.5, name: "Serengeti, Tanzania" },
@@ -547,7 +547,7 @@ export const speciesData: Species[] = [
     habitat: "Dense Lowland Tropical Forest",
     region: "Java, Indonesia",
     year: 1996,
-    icon: "🦏",
+    image: "/images/javan-rhinoceros.jpg",
     description: "The Javan rhinoceros is the rarest of all rhino species and one of the rarest large mammals on Earth. They are found only in Ujung Kulon National Park in Java.",
     locations: [
       { lat: -6.5, lng: 105.5, name: "Ujung Kulon National Park, Java" }
@@ -563,7 +563,7 @@ export const speciesData: Species[] = [
     habitat: "Mediterranean Woodland",
     region: "Spain & Portugal",
     year: 2002,
-    icon: "🐱",
+    image: "/images/iberian-lynx.jpg",
     description: "The Iberian lynx is the world's most endangered cat species. Once on the brink of extinction, intensive conservation efforts have brought populations back from just 100 individuals.",
     locations: [
       { lat: 37.5, lng: -6.5, name: "Doñana, Spain" },
@@ -580,7 +580,7 @@ export const speciesData: Species[] = [
     habitat: "Wetlands, Prairies",
     region: "North America",
     year: 1970,
-    icon: "🦢",
+    image: "/images/whooping-crane.jpg",
     description: "The whooping crane is North America's tallest bird and one of the rarest. They are known for their distinctive whooping call that can be heard from miles away.",
     locations: [
       { lat: 35.0, lng: -97.0, name: "Aransas National Wildlife Refuge, Texas" },
@@ -597,7 +597,7 @@ export const speciesData: Species[] = [
     habitat: "Forests",
     region: "New Zealand",
     year: 1994,
-    icon: "🦉",
+    image: "/images/kakapo.jpg",
     description: "The kakapo is the world's only flightless parrot and the heaviest parrot species. These nocturnal birds can live over 90 years and are critically endangered with just a few dozen breeding adults.",
     locations: [
       { lat: -44.0, lng: 176.5, name: "Codfish Island, New Zealand" },
@@ -614,7 +614,7 @@ export const speciesData: Species[] = [
     habitat: "Open Ocean",
     region: "Worldwide",
     year: 2018,
-    icon: "🐋",
+    image: "/images/fin-whale.jpg",
     description: "The fin whale is the second-largest animal ever to exist, reaching lengths of up to 85 feet. They were nearly wiped out by industrial whaling in the 20th century.",
     locations: [
       { lat: 45.0, lng: -45.0, name: "North Atlantic" },
@@ -632,7 +632,7 @@ export const speciesData: Species[] = [
     habitat: "Rivers",
     region: "India & Nepal",
     year: 2007,
-    icon: "🐊",
+    image: "/images/gharial.jpg",
     description: "The gharial is one of the most distinctive crocodilians with its extremely long, thin snout filled with interlocking teeth. They are excellent fish hunters but have been decimated by hunting and habitat loss.",
     locations: [
       { lat: 26.5, lng: 80.5, name: "Kanha National Park, India" },
@@ -649,7 +649,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Rainforests",
     region: "Democratic Republic of Congo",
     year: 2016,
-    icon: "🐒",
+    image: "/images/bonobo.jpg",
     description: "Bonobos are our closest living relatives along with chimpanzees. They live in matriarchal societies and are known for their peaceful conflict resolution through social bonding.",
     locations: [
       { lat: -2.0, lng: 16.5, name: "Salonga National Park, DRC" },
@@ -666,7 +666,7 @@ export const speciesData: Species[] = [
     habitat: "Coastal Waters",
     region: "Hawaiian Islands",
     year: 1976,
-    icon: "🦭",
+    image: "/images/hawaiian-monk-seal.jpg",
     description: "Hawaiian monk seals are one of the rarest seal species in the world. They are endemic to the Hawaiian Islands and face threats from marine debris, entanglement, and disease.",
     locations: [
       { lat: 21.5, lng: -158.0, name: "Oahu, Hawaii" },
@@ -684,7 +684,7 @@ export const speciesData: Species[] = [
     habitat: "Lakes",
     region: "North America",
     year: 1996,
-    icon: "🐟",
+    image: "/images/spoon-headed-lake-sculpin.jpg",
     description: "This freshwater fish is native to lakes in the northeastern United States and Canada. It is threatened by habitat degradation and competition from invasive species.",
     locations: [
       { lat: 45.0, lng: -73.0, name: "Lake Champlain" },
@@ -701,7 +701,7 @@ export const speciesData: Species[] = [
     habitat: "Tropical Forests, Mountains",
     region: "Southeast Asia",
     year: 2011,
-    icon: "🐯",
+    image: "/images/indochinese-tiger.jpg",
     description: "The Indochinese tiger is a medium-sized tiger subspecies found in the forests of Southeast Asia. They are solitary hunters with distinctive narrow stripes.",
     locations: [
       { lat: 22.0, lng: 100.0, name: "Mekong River region" },

@@ -19,14 +19,34 @@ export default function DetailPanel({ species, isOpen, onClose }: DetailPanelPro
     <aside className={`detail-panel ${isOpen ? 'open' : ''}`}>
       <div className="detail-header">
         <button className="detail-close" onClick={onClose}>×</button>
-        <h2 className="species-name">{species.icon} {species.name}</h2>
+        <h2 className="species-name">{species.name}</h2>
         <p className="scientific-name">{species.scientific}</p>
         <span className={`status-badge ${species.status.toLowerCase()}`}>
           {species.status}
         </span>
       </div>
       <div className="detail-image">
-        {species.icon}
+        <img 
+          src={species.image} 
+          alt={`${species.name} (${species.scientific})`}
+          className="species-image"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+            const container = e.currentTarget.parentElement;
+            if (container) {
+              // Clear any existing fallback elements
+              const existingFallback = container.querySelector('.image-fallback');
+              if (existingFallback) {
+                existingFallback.remove();
+              }
+              // Create new fallback
+              const fallback = document.createElement('div');
+              fallback.className = 'image-fallback';
+              fallback.textContent = species.name;
+              container.appendChild(fallback);
+            }
+          }}
+        />
       </div>
       <div className="detail-content">
         <div className="stats-grid">
