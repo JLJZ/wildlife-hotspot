@@ -52,11 +52,70 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
         if (count > 20) size = 'large';
         else if (count > 10) size = 'medium';
         
-        return L.divIcon({
+        // Create cluster div icon
+        const clusterIcon = L.divIcon({
           html: `<div><span>${count}</span></div>`,
           className: `marker-cluster marker-cluster-${size}`,
           iconSize: L.point(40, 40)
         });
+
+        // Build tooltip content for cluster
+        const childMarkers = cluster.getAllChildMarkers();
+        const speciesSet = new Set();
+        const speciesList: { name: string; scientific: string; status: string; statusColor: string }[] = [];
+
+        childMarkers.forEach(marker => {
+          // Access the species data from the marker's options or custom property
+          const speciesData = marker.options.speciesData;
+          if (speciesData && !speciesSet.has(speciesData.id)) {
+            speciesSet.add(speciesData.id);
+            speciesList.push({
+              name: speciesData.name,
+              scientific: speciesData.scientific,
+              status: speciesData.statusFull,
+              statusColor: statusColors[speciesData.status]
+            });
+          }
+        });
+
+        // Create tooltip content
+        let tooltipContent = `
+          <div style="background: #161b22; padding: 8px 12px; border-radius: 6px; border: 1px solid #30363d; min-width: 160px;">
+            <div style="color: #f0f6fc; font-family: Outfit, sans-serif; font-size: 12px; font-weight: bold; margin-bottom: 6px; border-bottom: 1px solid #30363d; padding-bottom: 4px;">
+              ${count} species in cluster:
+            </div>
+        `;
+
+        // Add species to tooltip (limit to first 10 to prevent overly long tooltips)
+        const displaySpecies = speciesList.slice(0, 10);
+        displaySpecies.forEach(species => {
+          tooltipContent += `
+            <div style="margin-bottom: 4px;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
+                <span style="width: 8px; height: 8px; background: ${species.statusColor}; border-radius: 50%; display: inline-block;"></span>
+                <strong style="color: #f0f6fc; font-family: Outfit, sans-serif; font-size: 11px;">${species.name}</strong>
+              </div>
+              <div style="color: #8b949e; font-family: Outfit, sans-serif; font-size: 10px; margin-left: 14px;">${species.scientific}</div>
+              <div style="color: ${species.statusColor}; font-family: Outfit, sans-serif; font-size: 10px; margin-left: 14px;">${species.status}</div>
+            </div>
+          `;
+        });
+
+        // Add indicator if there are more species
+        if (speciesList.length > 10) {
+          tooltipContent += `
+            <div style="color: #8b949e; font-family: Outfit, sans-serif; font-size: 10px; text-align: center; margin-top: 4px; border-top: 1px solid #30363d; padding-top: 4px;">
+              ... and ${speciesList.length - 10} more species
+            </div>
+          `;
+        }
+
+        tooltipContent += `</div>`;
+
+        // Bind tooltip to cluster icon
+        clusterIcon.options.tooltipContent = tooltipContent;
+
+        return clusterIcon;
       }
     });
 
@@ -131,12 +190,16 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
 
         // Add main marker with location name
         const mainMarker = createMarker(location.lat, location.lng, location.name);
+        // Store species data on marker for cluster tooltip access
+        mainMarker.options.speciesData = speciesItem;
         markerCluster.addLayer(mainMarker);
 
         // Add wrapped markers for world copy jumping
         // Create markers at +360° and -360° longitude
         const wrappedMarker1 = createMarker(location.lat, location.lng + 360, location.name);
+        wrappedMarker1.options.speciesData = speciesItem;
         const wrappedMarker2 = createMarker(location.lat, location.lng - 360, location.name);
+        wrappedMarker2.options.speciesData = speciesItem;
         
         markerCluster.addLayer(wrappedMarker1);
         markerCluster.addLayer(wrappedMarker2);
