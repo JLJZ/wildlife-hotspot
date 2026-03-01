@@ -28,7 +28,10 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
       minZoom: 2,
       maxZoom: 10,
       zoomControl: true,
-      worldCopyJump: true
+      worldCopyJump: true,
+      maxBounds: L.latLngBounds(L.latLng(-90, -Infinity), L.latLng(90, Infinity)),
+      maxBoundsViscosity: 1.0,
+      scrollWheelZoom: 'center'
     });
 
     // Add dark theme tiles
@@ -80,8 +83,8 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
       speciesItem.locations.forEach((location) => {
         const isCritical = speciesItem.status === 'CR';
         const size = speciesItem.population.includes('~') && 
-          (speciesItem.population.includes('<') || parseInt(speciesItem.population.match(/\d+/)?.[0] || 0) < 100) ? 8 : 
-          parseInt(speciesItem.population.match(/\d+/)?.[0] || 1000) > 1000 ? 14 : 10;
+          (speciesItem.population.includes('<') || parseInt(speciesItem.population.match(/\d+/)?.[0] || '0') < 100) ? 8 : 
+          parseInt(speciesItem.population.match(/\d+/)?.[0] || '1000') > 1000 ? 14 : 10;
 
         // Create tooltip content once to reuse
         const tooltipContent = `
