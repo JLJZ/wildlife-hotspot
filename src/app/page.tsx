@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import FilterBar from '@/components/FilterBar';
 import Legend from '@/components/Legend';
 import DetailPanel from '@/components/DetailPanel';
+import FrontPage from '@/components/FrontPage';
 import { speciesData, Species } from '@/data/species';
 
 // Dynamically import Map with SSR disabled (since Leaflet needs window)
@@ -23,6 +24,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [showFrontPage, setShowFrontPage] = useState(true);
 
   // Filter species based on current filters and search
   const filteredSpecies = useMemo(() => {
@@ -60,37 +62,47 @@ export default function Home() {
     setIsPanelOpen(false);
   };
 
+  const handleExploreMap = () => {
+    setShowFrontPage(false);
+  };
+
   return (
-    <main className="main-container">
-      <div className="map-container">
-        <Map 
-          species={filteredSpecies} 
-          onSpeciesSelect={handleSpeciesSelect}
-        />
-        
-        <FilterBar 
-          filters={filters}
-          searchTerm={searchTerm}
-          onFilterChange={handleFilterChange}
-          onSearchChange={handleSearchChange}
-          onReset={handleReset}
-        />
+    <>
+      {showFrontPage ? (
+        <FrontPage onExploreMap={handleExploreMap} />
+      ) : (
+        <main className="main-container">
+          <div className="map-container">
+            <Map 
+              species={filteredSpecies} 
+              onSpeciesSelect={handleSpeciesSelect}
+            />
+            
+            <FilterBar 
+              filters={filters}
+              searchTerm={searchTerm}
+              onFilterChange={handleFilterChange}
+              onSearchChange={handleSearchChange}
+              onReset={handleReset}
+            />
 
-        <Legend />
+            <Legend />
 
-        {filteredSpecies.length === 0 && (
-          <div className="no-results">
-            <h3>No species found</h3>
-            <p>Try adjusting your filters or search term</p>
+            {filteredSpecies.length === 0 && (
+              <div className="no-results">
+                <h3>No species found</h3>
+                <p>Try adjusting your filters or search term</p>
+              </div>
+            )}
           </div>
-        )}
-      </div>
 
-      <DetailPanel 
-        species={selectedSpecies}
-        isOpen={isPanelOpen}
-        onClose={handleClosePanel}
-      />
-    </main>
+          <DetailPanel 
+            species={selectedSpecies}
+            isOpen={isPanelOpen}
+            onClose={handleClosePanel}
+          />
+        </main>
+      )}
+    </>
   );
 }
