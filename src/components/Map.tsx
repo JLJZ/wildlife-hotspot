@@ -65,8 +65,8 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
         const speciesList: { name: string; scientific: string; status: string; statusColor: string }[] = [];
 
         childMarkers.forEach(marker => {
-          // Access the species data from the marker's options or custom property
-          const speciesData = marker.options.speciesData;
+          // Access the species data from the marker's options using type assertion
+          const speciesData = (marker.options as any).speciesData;
           if (speciesData && !speciesSet.has(speciesData.id)) {
             speciesSet.add(speciesData.id);
             speciesList.push({
@@ -112,8 +112,8 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
 
         tooltipContent += `</div>`;
 
-        // Bind tooltip to cluster icon
-        clusterIcon.options.tooltipContent = tooltipContent;
+        // Bind tooltip to cluster icon using type assertion
+        (clusterIcon.options as any).tooltipContent = tooltipContent;
 
         return clusterIcon;
       }
@@ -190,16 +190,16 @@ export default function Map({ species, onSpeciesSelect }: MapProps) {
 
         // Add main marker with location name
         const mainMarker = createMarker(location.lat, location.lng, location.name);
-        // Store species data on marker for cluster tooltip access
-        mainMarker.options.speciesData = speciesItem;
+        // Store species data on marker for cluster tooltip access using type assertion
+        (mainMarker.options as any).speciesData = speciesItem;
         markerCluster.addLayer(mainMarker);
 
         // Add wrapped markers for world copy jumping
         // Create markers at +360° and -360° longitude
         const wrappedMarker1 = createMarker(location.lat, location.lng + 360, location.name);
-        wrappedMarker1.options.speciesData = speciesItem;
+        (wrappedMarker1.options as any).speciesData = speciesItem;
         const wrappedMarker2 = createMarker(location.lat, location.lng - 360, location.name);
-        wrappedMarker2.options.speciesData = speciesItem;
+        (wrappedMarker2.options as any).speciesData = speciesItem;
         
         markerCluster.addLayer(wrappedMarker1);
         markerCluster.addLayer(wrappedMarker2);
