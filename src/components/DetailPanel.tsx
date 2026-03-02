@@ -82,6 +82,30 @@ export default function DetailPanel({ species, isOpen, onClose }: DetailPanelPro
             ))}
           </div>
         </div>
+        <div className="detail-section">
+          <h4>More Information</h4>
+          <div className="info-links">
+            <a 
+              href={species.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="info-link"
+            >
+              View on IUCN Red List
+            </a>
+          </div>
+        </div>
+        <div className="detail-section">
+          <h4>Image License</h4>
+          <div className="license-info">
+            <p className="license-text">
+              Image licensed under {species.license.toUpperCase()}
+            </p>
+            <p className="license-note">
+              Photo by {species.name} (via iNaturalist)
+            </p>
+          </div>
+        </div>
       </div>
     </aside>
   );

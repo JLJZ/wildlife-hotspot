@@ -428,6 +428,61 @@ header {
   color: var(--primary);
 }
 
+/* Info Links */
+.info-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.info-link:hover {
+  background: var(--border);
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+.info-link::after {
+  content: "→";
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* License Information */
+.license-info {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.license-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.license-note {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
 /* Footer */
 footer {
   height: 50px;
